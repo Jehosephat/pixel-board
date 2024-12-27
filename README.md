@@ -38,20 +38,19 @@ A dApp for burning and transferring GALA tokens, featuring an interactive commun
 ## Technical Implementation
 
 ### Pixel Board
-The pixel board uses IPFS to store the canvas state:
-- Canvas data is stored as a binary array of RGB values
-- Each update creates a new IPFS pin
-- Canvas history is preserved through IPFS content addressing
-- Local caching improves performance
-- Updates are batched to minimize IPFS writes
-
-## Development Setup
+The pixel board uses Firebase Realtime Database for real-time collaboration:
+- Canvas data is stored as pixel coordinates and RGB values
+- Real-time updates using Firebase listeners
+- Automatic synchronization across all connected users
+- Optimized data structure for performance
+- Transaction-based updates ensure data consistency
 
 ## Prerequisites
 
 - Node.js (v14 or later)
 - npm or yarn
 - MetaMask wallet
+- Firebase account
 
 ## Project Structure
 
@@ -59,6 +58,8 @@ The pixel board uses IPFS to store the canvas state:
 - `src/components/`
   - `Balance.vue` - Displays GALA balance
   - `BurnGala.vue` - Handles token burning
+  - `TransferGala.vue` - Handles token transfers
+  - `PixelBoard.vue` - Interactive community canvas
   - `WalletConnect.vue` - Handles wallet connection
 - Environment variables are defined in `.env`
 - Vite configuration in `vite.config.ts`
@@ -68,9 +69,9 @@ The pixel board uses IPFS to store the canvas state:
 1. Open your browser and navigate to `http://localhost:3000`
 2. Click "Connect Wallet" to connect your MetaMask wallet
 3. Once connected, you'll see your GALA balance
-4. Enter the amount of GALA you want to burn
-5. Click "Burn Tokens" to initiate the transaction
-6. Confirm the transaction in MetaMask
+4. Navigate to the Pixel Board tab to start drawing
+5. Each pixel costs 1 GALA to place
+6. Click "Claim Pixels" to burn GALA and save your changes
 
 ## Development
 
@@ -78,10 +79,12 @@ The application is built with:
 - Vue 3 (Composition API)
 - TypeScript
 - Vite
+- Firebase Realtime Database
 - GalaChain Connect library
 
 ## Additional Resources
 
 - [GalaChain Documentation](https://docs.galachain.com)
 - [GalaChain Connect Library](https://github.com/GalaChain/sdk)
+- [Firebase Documentation](https://firebase.google.com/docs)
 
