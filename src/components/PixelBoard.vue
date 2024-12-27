@@ -201,7 +201,7 @@ async function saveCanvas() {
           instance: "0"
         }
       }],
-      uniqueKey: `january-2025-pixel-board-example-${Date.now()}`
+      uniqueKey: `january-2025-event-${import.meta.env.VITE_PROJECT_ID}-${Date.now()}`
     }
 
     // Sign and submit burn transaction
